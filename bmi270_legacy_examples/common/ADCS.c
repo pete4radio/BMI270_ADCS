@@ -27,10 +27,10 @@ Pete*/
 int16_t adcs_open_comm_intf(enum adcs_comm_intf intf_type, void *arg) { return 0;}
 int16_t adcs_close_comm_intf(enum adcs_comm_intf intf_type, void *arg) { return 0;}
 int16_t adcs_get_board_info(struct adcs_board_info *data) { return 0;}
-int16_t adcs_set_pin_config(enum adcs_multi_io_pin pin_number,
+int16_t adcs_set_pin_config(enum adcs_gpio_pin pin_number,
     enum adcs_pin_direction direction,
     enum adcs_pin_value pin_value) { return 0;}
-int16_t adcs_get_pin_config(enum adcs_multi_io_pin pin_number,
+int16_t adcs_get_pin_config(enum adcs_gpio_pin pin_number,
     enum adcs_pin_direction *pin_direction,
     enum adcs_pin_value *pin_value) { return 0;}
 int16_t adcs_set_shuttleboard_vdd_vddio_config(uint16_t vdd_millivolt, uint16_t vddio_millivolt) { return 0;}
@@ -112,10 +112,10 @@ void adcs_delay_realtime_usec(uint32_t period) { sleep_us(period); }
 // current reference time in us
 uint32_t adcs_get_realtime_usec(void) { return to_us_since_boot(get_absolute_time()); }
 
-void adcs_attach_interrupt(enum adcs_multi_io_pin pin_number,
+void adcs_attach_interrupt(enum adcs_gpio_pin pin_number,
     void (*callback)(uint32_t, uint32_t),                
     enum adcs_pin_interrupt_mode int_mode);
-    void adcs_detach_interrupt(enum adcs_multi_io_pin pin_number) { return ; }
+    void adcs_detach_interrupt(enum adcs_gpio_pin pin_number) { return ; }
 // get program version
 char* adcs_get_version() { return "V1.0";  }
 uint16_t adcs_intf_available(enum adcs_comm_intf intf) { return 0; }

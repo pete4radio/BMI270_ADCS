@@ -172,7 +172,7 @@ int8_t bmi2_interface_init(struct bmi2_dev *bmi, uint8_t intf)
         /* Bus configuration : SPI */
         else if (intf == BMI2_SPI_INTF)
         {
-            printf("SPI Interface \n");
+            printf("SPI Interface not yet implemented\n");
 
             /* To initialize the user SPI function */
             dev_addr = ADCS_MINI_SHUTTLE_PIN_2_1;

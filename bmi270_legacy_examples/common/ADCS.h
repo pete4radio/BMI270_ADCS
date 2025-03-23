@@ -264,7 +264,7 @@ enum adcs_tx_power {
 /*!
  *  @brief user configurable Shuttle board pin description
  */
-enum adcs_multi_io_pin {
+enum adcs_gpio_pin {
     ADCS_SHUTTLE_PIN_7 = 0x09, /*<  CS pin*/
     ADCS_SHUTTLE_PIN_8 = 0x05, /*<  Multi-IO 5*/
     ADCS_SHUTTLE_PIN_9 = 0x00, /*<  Multi-IO 0*/
@@ -275,6 +275,40 @@ enum adcs_multi_io_pin {
     ADCS_SHUTTLE_PIN_20 = 0x06, /*<  Multi-IO 6*/
     ADCS_SHUTTLE_PIN_21 = 0x07, /*<  Multi-IO 7*/
     ADCS_SHUTTLE_PIN_22 = 0x04, /*<  Multi-IO 4*/
+    ADCS_PICO_PIN_1 = 0x00, /*<  GPIO0 */
+    ADCS_PICO_PIN_2 = 0x01, /*<  GPIO1 */
+    ADCS_PICO_PIN_4 = 0x02, /*<  GPIO2 */
+    ADCS_PICO_PIN_5 = 0x03, /*<  GPIO3 */
+    ADCS_PICO_PIN_6 = 0x04, /*<  GPIO4 I2C0 SDA */
+    ADCS_PICO_PIN_7 = 0x05, /*<  GPIO5 I2C0 SCL */
+    ADCS_PICO_PIN_9 = 0x06, /*<  GPIO6 */
+    ADCS_PICO_PIN_10 = 0x07, /*<  GPIO7 */
+    ADCS_PICO_PIN_11 = 0x08, /*<  GPIO8 */
+    ADCS_PICO_PIN_12 = 0x09, /*<  GPIO9 */
+    ADCS_PICO_PIN_14 = 0x0A, /*<  GPIO10 */
+    ADCS_PICO_PIN_15 = 0x0B, /*<  GPIO11 */
+    ADCS_PICO_PIN_16 = 0x0C, /*<  GPIO12 */
+    ADCS_PICO_PIN_17 = 0x0D, /*<  GPIO13 */
+    ADCS_PICO_PIN_19 = 0x0E, /*<  GPIO14 I2C1 SDA */
+    ADCS_PICO_PIN_20 = 0x0F, /*<  GPIO15 I2C1 SCL */
+    ADCS_PICO_PIN_21 = 0x10, /*<  GPIO16 */
+    ADCS_PICO_PIN_22 = 0x11, /*<  GPIO17 */
+    ADCS_PICO_PIN_24 = 0x12, /*<  GPIO18 */
+    ADCS_PICO_PIN_25 = 0x13, /*<  GPIO19 */
+    ADCS_PICO_PIN_26 = 0x14, /*<  GPIO20 */
+    ADCS_PICO_PIN_27 = 0x15, /*<  GPIO21 */
+    ADCS_PICO_PIN_29 = 0x16, /*<  GPIO22 */
+    ADCS_PICO_PIN_31 = 0x1A, /*<  GPIO26 */
+    ADCS_PICO_PIN_32 = 0x1B, /*<  GPIO27 */
+    ADCS_PICO_PIN_34 = 0x1C, /*<  GPIO28 */
+
+    ADCS_2350_IMU_INT1 = 13, /*<  GPIO13 */
+    ADCS_2350_I2C1_SDA = 14, /*<  GPIO14 */ 
+    ADCS_2350_I2C1_SCL = 15, /*<  GPIO15 */
+    ADCS_2350_IMU_INT2 = 16, /*<  GPIO16 */
+    ADCS_2350_EN_IMU   = 17, /*<  GPIO17 */
+
+
 
 #if !defined(MCU_APP20)
     ADCS_MINI_SHUTTLE_PIN_1_4 = 0x10, /*<  GPIO0 */
@@ -433,7 +467,7 @@ struct adcs_streaming_config
     uint8_t cs_pin; /*< Chip select */
     uint16_t sampling_time; /*< Sampling time */
     enum adcs_sampling_unit sampling_units; /*< micro second / milli second - Sampling unit */
-    enum adcs_multi_io_pin int_pin; /*< Interrupt pin */
+    enum adcs_gpio_pin int_pin; /*< Interrupt pin */
     uint8_t int_timestamp; /*< 1- enable /0- disable time stamp for corresponding sensor */
 };
 
@@ -509,7 +543,7 @@ int16_t adcs_get_board_info(struct adcs_board_info *data);
  *  @retval 0 -> Success
  *  @retval Any non zero value -> Fail
  */
-int16_t adcs_set_pin_config(enum adcs_multi_io_pin pin_number,
+int16_t adcs_set_pin_config(enum adcs_gpio_pin pin_number,
                               enum adcs_pin_direction direction,
                               enum adcs_pin_value pin_value);
 
@@ -524,7 +558,7 @@ int16_t adcs_set_pin_config(enum adcs_multi_io_pin pin_number,
  *  @retval 0 -> Success
  *  @retval Any non zero value -> Fail
  */
-int16_t adcs_get_pin_config(enum adcs_multi_io_pin pin_number,
+int16_t adcs_get_pin_config(enum adcs_gpio_pin pin_number,
                               enum adcs_pin_direction *pin_direction,
                               enum adcs_pin_value *pin_value);
 
@@ -852,7 +886,7 @@ uint32_t adcs_get_realtime_usec(void);
  *
  * @return void
  */
-void adcs_attach_interrupt(enum adcs_multi_io_pin pin_number,
+void adcs_attach_interrupt(enum adcs_gpio_pin pin_number,
                              void (*callback)(uint32_t, uint32_t),                
                              enum adcs_pin_interrupt_mode int_mode);
 
@@ -863,7 +897,7 @@ void adcs_attach_interrupt(enum adcs_multi_io_pin pin_number,
  *
  * @return void
  */
-void adcs_detach_interrupt(enum adcs_multi_io_pin pin_number);
+void adcs_detach_interrupt(enum adcs_gpio_pin pin_number);
 
 /*!
  * @brief Get ADCS library version

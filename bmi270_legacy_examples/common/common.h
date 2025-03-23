@@ -15,7 +15,7 @@ extern "C" {
 #include <stdio.h>
 #include <stdbool.h>
 #include "bmi2.h"
-#include "adcs.h"
+#include "ADCS.h"
 
 /******************************************************************************/
 /* Structure declarations */

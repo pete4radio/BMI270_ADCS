@@ -1,8 +1,8 @@
-# Install script for directory: C:/Users/pete/.pico-sdk/sdk/2.1.1/src/rp2_common/hardware_divider
+# Install script for directory: /Users/petemahowald/.pico-sdk/sdk/2.1.1/src/rp2_common/hardware_divider
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/main")
+  set(CMAKE_INSTALL_PREFIX "/usr/local")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -34,12 +34,12 @@ endif()
 
 # Set path to fallback-tool for dependency-resolution.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "C:/Users/pete/.pico-sdk/toolchain/14_2_Rel1/bin/arm-none-eabi-objdump.exe")
+  set(CMAKE_OBJDUMP "/Users/petemahowald/.pico-sdk/toolchain/14_2_Rel1/bin/arm-none-eabi-objdump")
 endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "C:/Users/pete/Documents/pico/BMI270_SensorAPI/build/pico-sdk/src/rp2_common/hardware_divider/install_local_manifest.txt"
+  file(WRITE "/Users/petemahowald/Documents/pico/BMI270_ADCS/build/pico-sdk/src/rp2_common/hardware_divider/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()
