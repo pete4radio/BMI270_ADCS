@@ -69,7 +69,8 @@ int main(void)
     
     // wait 5s delay to wait for the user to open the serial terminal
     while (1) {
-        sleep_ms(5000);
+        indx = 0;  // Allow the data taking loop to execute afresh
+        (5000);
         printf("BMI270 Gyro Example V1\n");
 
         /* Interface reference is given as a parameter

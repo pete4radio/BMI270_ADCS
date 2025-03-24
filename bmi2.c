@@ -1939,9 +1939,11 @@ int8_t bmi2_sec_init(struct bmi2_dev *dev)
                      * the register to identify the sensor
                      */
                     dev->chip_id = chip_id;
+                    printf("bmi2.c: bmi2_sec_init: BMI2_E_DEV_NOT_FOUND: Expecting Chip ID 0x24 but got 0x%x\n", chip_id);
                     rslt = BMI2_E_DEV_NOT_FOUND;
                 }
             }
+            else {printf("bmi2.c: bmi2_sec_init: Couldn't read chip ID 0x%x\n", chip_id);}
         }
     }
 
@@ -1977,7 +1979,7 @@ int8_t bmi2_get_regs(uint8_t reg_addr, uint8_t *data, uint16_t len, struct bmi2_
             reg_addr = (reg_addr | BMI2_SPI_RD_MASK);
         }
 
-        dev->intf_rslt = dev->read(reg_addr, temp_buf, (len + dev->dummy_byte), dev->intf_ptr);
+        dev->intf_rslt = ((len + dev->dummy_byte) != dev->read(reg_addr, temp_buf, (len + dev->dummy_byte), dev->intf_ptr));
 
         if (dev->aps_status == BMI2_ENABLE)
         {
@@ -2000,7 +2002,6 @@ int8_t bmi2_get_regs(uint8_t reg_addr, uint8_t *data, uint16_t len, struct bmi2_
         else
         {
             rslt = BMI2_E_COM_FAIL;
-            printf("bmi2.c: bmi2_get_regs: BMI2_E_COM_FAIL: Couldn't read chip ID %d\n", temp_buf[0]);
         }
     }
     else
