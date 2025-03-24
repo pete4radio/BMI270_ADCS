@@ -1,4 +1,4 @@
-set(CMAKE_C_COMPILER "/Users/petemahowald/.pico-sdk/toolchain/14_2_Rel1/bin/arm-none-eabi-gcc")
+set(CMAKE_C_COMPILER "C:/Users/pete/.pico-sdk/toolchain/14_2_Rel1/bin/arm-none-eabi-gcc.exe")
 set(CMAKE_C_COMPILER_ARG1 "")
 set(CMAKE_C_COMPILER_ID "GNU")
 set(CMAKE_C_COMPILER_VERSION "14.2.1")
@@ -22,11 +22,11 @@ set(CMAKE_C_SIMULATE_VERSION "")
 
 
 
-set(CMAKE_AR "/Users/petemahowald/.pico-sdk/toolchain/14_2_Rel1/bin/arm-none-eabi-ar")
-set(CMAKE_C_COMPILER_AR "/Users/petemahowald/.pico-sdk/toolchain/14_2_Rel1/bin/arm-none-eabi-gcc-ar")
-set(CMAKE_RANLIB "/Users/petemahowald/.pico-sdk/toolchain/14_2_Rel1/bin/arm-none-eabi-ranlib")
-set(CMAKE_C_COMPILER_RANLIB "/Users/petemahowald/.pico-sdk/toolchain/14_2_Rel1/bin/arm-none-eabi-gcc-ranlib")
-set(CMAKE_LINKER "/Users/petemahowald/.pico-sdk/toolchain/14_2_Rel1/bin/arm-none-eabi-ld")
+set(CMAKE_AR "C:/Users/pete/.pico-sdk/toolchain/14_2_Rel1/bin/arm-none-eabi-ar.exe")
+set(CMAKE_C_COMPILER_AR "C:/Users/pete/.pico-sdk/toolchain/14_2_Rel1/bin/arm-none-eabi-gcc-ar.exe")
+set(CMAKE_RANLIB "C:/Users/pete/.pico-sdk/toolchain/14_2_Rel1/bin/arm-none-eabi-ranlib.exe")
+set(CMAKE_C_COMPILER_RANLIB "C:/Users/pete/.pico-sdk/toolchain/14_2_Rel1/bin/arm-none-eabi-gcc-ranlib.exe")
+set(CMAKE_LINKER "C:/Users/pete/.pico-sdk/toolchain/14_2_Rel1/bin/arm-none-eabi-ld.exe")
 set(CMAKE_LINKER_LINK "")
 set(CMAKE_LINKER_LLD "")
 set(CMAKE_C_COMPILER_LINKER "NOTFOUND")
@@ -75,7 +75,7 @@ endif()
 
 
 
-set(CMAKE_C_IMPLICIT_INCLUDE_DIRECTORIES "/Users/petemahowald/.pico-sdk/toolchain/14_2_Rel1/lib/gcc/arm-none-eabi/14.2.1/include;/Users/petemahowald/.pico-sdk/toolchain/14_2_Rel1/lib/gcc/arm-none-eabi/14.2.1/include-fixed;/Users/petemahowald/.pico-sdk/toolchain/14_2_Rel1/arm-none-eabi/include")
+set(CMAKE_C_IMPLICIT_INCLUDE_DIRECTORIES "C:/Users/pete/.pico-sdk/toolchain/14_2_Rel1/lib/gcc/arm-none-eabi/14.2.1/include;C:/Users/pete/.pico-sdk/toolchain/14_2_Rel1/lib/gcc/arm-none-eabi/14.2.1/include-fixed;C:/Users/pete/.pico-sdk/toolchain/14_2_Rel1/arm-none-eabi/include")
 set(CMAKE_C_IMPLICIT_LINK_LIBRARIES "")
-set(CMAKE_C_IMPLICIT_LINK_DIRECTORIES "/Users/petemahowald/.pico-sdk/toolchain/14_2_Rel1/lib/gcc/arm-none-eabi/14.2.1/thumb/v8-m.main+fp/softfp;/Users/petemahowald/.pico-sdk/toolchain/14_2_Rel1/arm-none-eabi/lib/thumb/v8-m.main+fp/softfp;/Users/petemahowald/.pico-sdk/toolchain/14_2_Rel1/lib/gcc/arm-none-eabi/14.2.1;/Users/petemahowald/.pico-sdk/toolchain/14_2_Rel1/lib/gcc;/Users/petemahowald/.pico-sdk/toolchain/14_2_Rel1/arm-none-eabi/lib")
+set(CMAKE_C_IMPLICIT_LINK_DIRECTORIES "C:/Users/pete/.pico-sdk/toolchain/14_2_Rel1/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp;C:/Users/pete/.pico-sdk/toolchain/14_2_Rel1/arm-none-eabi/lib/thumb/v6-m/nofp;C:/Users/pete/.pico-sdk/toolchain/14_2_Rel1/lib/gcc/arm-none-eabi/14.2.1;C:/Users/pete/.pico-sdk/toolchain/14_2_Rel1/lib/gcc;C:/Users/pete/.pico-sdk/toolchain/14_2_Rel1/arm-none-eabi/lib")
 set(CMAKE_C_IMPLICIT_LINK_FRAMEWORK_DIRECTORIES "")

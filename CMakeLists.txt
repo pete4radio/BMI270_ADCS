@@ -23,7 +23,7 @@ if (EXISTS ${picoVscode})
     include(${picoVscode})
 endif()
 # ====================================================================================
-set(PICO_BOARD pico2 CACHE STRING "Board type")
+set(PICO_BOARD pico CACHE STRING "Board type")
 
 # Pull in Raspberry Pi Pico SDK (must be before project)
 include(pico_sdk_import.cmake)
@@ -50,6 +50,10 @@ target_include_directories(${PROJECT} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/includ
 target_link_libraries(${PROJECT} pico_stdlib hardware_spi hardware_i2c
     hardware_gpio hardware_irq hardware_timer pico_printf pico_stdlib 
     pico_time)
+
+# enable usb and uart output
+pico_enable_stdio_usb(${PROJECT} 1)
+pico_enable_stdio_uart(${PROJECT} 1)
 
 # create map/bin/hex file etc.
 pico_add_extra_outputs(${PROJECT})

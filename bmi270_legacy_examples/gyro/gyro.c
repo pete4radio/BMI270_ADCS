@@ -11,6 +11,10 @@
 #include "bmi270_legacy.h"
 #include "common.h"
 
+#include "pico/stdlib.h"
+#include "pico/binary_info.h"
+#include "hardware/i2c.h"
+
 /******************************************************************************/
 /*!         Static Function Declaration                                       */
 
@@ -40,7 +44,7 @@ static float lsb_to_dps(int16_t val, float dps, uint8_t bit_width);
 
 /* This function starts the execution of program. */
 int main(void)
-{
+{    
     /* Status of api are returned to this variable. */
     int8_t rslt;
 
@@ -59,6 +63,10 @@ int main(void)
 
     /* Assign gyro sensor to variable. */
     uint8_t sens_list = BMI2_GYRO;
+
+    // Enable UART so we can print status output
+    stdio_init_all();
+
 
     /* Interface reference is given as a parameter
      * For I2C : BMI2_I2C_INTF
