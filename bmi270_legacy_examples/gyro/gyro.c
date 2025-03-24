@@ -68,65 +68,67 @@ int main(void)
     stdio_init_all();
     
     // wait 5s delay to wait for the user to open the serial terminal
-    sleep_ms(5000);
-    printf("BMI270 Gyro Example V1\n");
+    while (1) {
+        sleep_ms(5000);
+        printf("BMI270 Gyro Example V1\n");
 
-    /* Interface reference is given as a parameter
-     * For I2C : BMI2_I2C_INTF
-     * For SPI : BMI2_SPI_INTF
-     */
-    rslt = bmi2_interface_init(&bmi, BMI2_I2C_INTF);
-    bmi2_error_codes_print_result(rslt);
+        /* Interface reference is given as a parameter
+        * For I2C : BMI2_I2C_INTF
+        * For SPI : BMI2_SPI_INTF
+        */
+        rslt = bmi2_interface_init(&bmi, BMI2_I2C_INTF);
+        bmi2_error_codes_print_result(rslt);
 
-    /* Initialize bmi270_legacy. */
-    rslt = bmi270_legacy_init(&bmi);
-    bmi2_error_codes_print_result(rslt);
-
-    if (rslt == BMI2_OK)
-    {
-        /* Gyro configuration settings. */
-        rslt = set_gyro_config(&bmi);
+        /* Initialize bmi270_legacy. */
+        rslt = bmi270_legacy_init(&bmi);
         bmi2_error_codes_print_result(rslt);
 
         if (rslt == BMI2_OK)
         {
-            /* NOTE:
-             * Gyro enable must be done after setting configurations
-             */
-
-            /* Enable the selected sensors. */
-            rslt = bmi2_sensor_enable(&sens_list, 1, &bmi);
+            /* Gyro configuration settings. */
+            rslt = set_gyro_config(&bmi);
             bmi2_error_codes_print_result(rslt);
 
-            printf("\nData set, Gyr_Raw_X, Gyr_Raw_Y, Gyr_Raw_Z, Gyro_DPS_X, Gyro_DPS_Y, Gyro_DPS_Z\n\n");
-
-            while (indx <= limit)
+            if (rslt == BMI2_OK)
             {
-                rslt = bmi2_get_sensor_data(&sensor_data, &bmi);
+                /* NOTE:
+                * Gyro enable must be done after setting configurations
+                */
+
+                /* Enable the selected sensors. */
+                rslt = bmi2_sensor_enable(&sens_list, 1, &bmi);
                 bmi2_error_codes_print_result(rslt);
 
-                if ((rslt == BMI2_OK) && (sensor_data.status & BMI2_DRDY_GYR))
+                printf("\nData set, Gyr_Raw_X, Gyr_Raw_Y, Gyr_Raw_Z, Gyro_DPS_X, Gyro_DPS_Y, Gyro_DPS_Z\n\n");
+
+                while (indx <= limit)
                 {
-                    /* Converting lsb to degree per second for 16 bit gyro at 2000dps range. */
-                    x = lsb_to_dps(sensor_data.gyr.x, (float)2000, bmi.resolution);
-                    y = lsb_to_dps(sensor_data.gyr.y, (float)2000, bmi.resolution);
-                    z = lsb_to_dps(sensor_data.gyr.z, (float)2000, bmi.resolution);
+                    rslt = bmi2_get_sensor_data(&sensor_data, &bmi);
+                    bmi2_error_codes_print_result(rslt);
 
-                    printf("%d, %d, %d, %d, %4.2f, %4.2f, %4.2f\n",
-                           indx,
-                           sensor_data.gyr.x,
-                           sensor_data.gyr.y,
-                           sensor_data.gyr.z,
-                           x,
-                           y,
-                           z);
+                    if ((rslt == BMI2_OK) && (sensor_data.status & BMI2_DRDY_GYR))
+                    {
+                        /* Converting lsb to degree per second for 16 bit gyro at 2000dps range. */
+                        x = lsb_to_dps(sensor_data.gyr.x, (float)2000, bmi.resolution);
+                        y = lsb_to_dps(sensor_data.gyr.y, (float)2000, bmi.resolution);
+                        z = lsb_to_dps(sensor_data.gyr.z, (float)2000, bmi.resolution);
 
-                    indx++;
+                        printf("%d, %d, %d, %d, %4.2f, %4.2f, %4.2f\n",
+                            indx,
+                            sensor_data.gyr.x,
+                            sensor_data.gyr.y,
+                            sensor_data.gyr.z,
+                            x,
+                            y,
+                            z);
+
+                        indx++;
+                    }
                 }
             }
         }
+        printf("\nRe-running...\n");
     }
-
     bmi2_adcs_deinit();
 
     return rslt;
