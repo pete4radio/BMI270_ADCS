@@ -52,8 +52,8 @@ target_link_libraries(${PROJECT} pico_stdlib hardware_spi hardware_i2c
     pico_time)
 
 # enable usb and uart output
-pico_enable_stdio_usb(${PROJECT} 1)
-pico_enable_stdio_uart(${PROJECT} 1)
+#pico_enable_stdio_usb(${PROJECT} 1)
+#pico_enable_stdio_uart(${PROJECT} 0)
 
 # create map/bin/hex file etc.
 pico_add_extra_outputs(${PROJECT})

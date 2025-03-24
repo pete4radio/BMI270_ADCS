@@ -71,7 +71,7 @@ int8_t adcs_read_i2c(enum adcs_i2c_bus bus, uint8_t dev_addr, uint8_t reg_addr, 
    if (count < 1) {  return 0;  }
 // Read data from register(s) over I2C
 	i2c_write_blocking(i2c0, dev_addr, &reg_addr, 1, true);
-	num_bytes_read = i2c_read_blocking(i2c0, reg_addr, reg_data, count, false);
+	num_bytes_read = i2c_read_blocking(i2c0, dev_addr, reg_data, count, false);
 	return num_bytes_read;
 }
 

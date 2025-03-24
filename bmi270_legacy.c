@@ -1909,6 +1909,10 @@ int8_t bmi270_legacy_init(struct bmi2_dev *dev)
             /* Get the gyroscope cross axis sensitivity */
             rslt = bmi2_get_gyro_cross_sense(dev);
         }
+        else
+        {
+            printf("common.c:bmi279_legacy_init: BMI270_LEGACY initialization failed with error %d\n", rslt);
+        }
     }
 
     return rslt;

@@ -66,7 +66,10 @@ int main(void)
 
     // Enable UART so we can print status output
     stdio_init_all();
-
+    
+    // wait 5s delay to wait for the user to open the serial terminal
+    sleep_ms(5000);
+    printf("BMI270 Gyro Example V1\n");
 
     /* Interface reference is given as a parameter
      * For I2C : BMI2_I2C_INTF

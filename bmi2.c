@@ -2000,6 +2000,7 @@ int8_t bmi2_get_regs(uint8_t reg_addr, uint8_t *data, uint16_t len, struct bmi2_
         else
         {
             rslt = BMI2_E_COM_FAIL;
+            printf("bmi2.c: bmi2_get_regs: BMI2_E_COM_FAIL: Couldn't read chip ID %d\n", temp_buf[0]);
         }
     }
     else

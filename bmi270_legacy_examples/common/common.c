@@ -107,13 +107,13 @@ int16_t adcs_board_init(enum adcs_comm_intf intf_type, bool get_board_info)
         setbuf(stdout, NULL);
 #endif
 
-        if (result == ADCS_SUCCESS)
-        {
-            if ((board_info.shuttle_id != BMI2XY_SHUTTLE_ID))
-            {
-                printf("! Warning invalid sensor shuttle \n ," "This application will not support this sensor \n");
-            }
-        }
+        // if (result == ADCS_SUCCESS)
+        // {
+        //     if ((board_info.shuttle_id != BMI2XY_SHUTTLE_ID))
+        //     {
+        //         printf("! Warning invalid sensor shuttle \n ," "This application will not support this sensor \n");
+        //     }
+        // }
     }
 
     adcs_delay_msec(100);
@@ -147,7 +147,7 @@ int8_t bmi2_interface_init(struct bmi2_dev *bmi, uint8_t intf)
         /* Bus configuration : I2C */
         if (intf == BMI2_I2C_INTF)
         {
-            printf("I2C Interface \n");
+            printf("common.c: bmi2_interface_init: Initializing I2C Interface \n");
 
             /* To initialize the user I2C function */
             dev_addr = BMI2_I2C_PRIM_ADDR;
@@ -156,17 +156,17 @@ int8_t bmi2_interface_init(struct bmi2_dev *bmi, uint8_t intf)
             bmi->write = bmi2_i2c_write;
 
             /* SDO to Ground */
-            adcs_set_pin_config(ADCS_SHUTTLE_PIN_22, ADCS_PIN_DIRECTION_OUT, ADCS_PIN_VALUE_LOW);
+            //adcs_set_pin_config(ADCS_SHUTTLE_PIN_22, ADCS_PIN_DIRECTION_OUT, ADCS_PIN_VALUE_LOW);
 
             /* Make CSB pin HIGH */
-            adcs_set_pin_config(ADCS_SHUTTLE_PIN_21, ADCS_PIN_DIRECTION_OUT, ADCS_PIN_VALUE_HIGH);
-            adcs_delay_msec(100);
+            //adcs_set_pin_config(ADCS_SHUTTLE_PIN_21, ADCS_PIN_DIRECTION_OUT, ADCS_PIN_VALUE_HIGH);
+            //adcs_delay_msec(100);
 
             /* SDO pin is made low */
-            adcs_set_pin_config(ADCS_SHUTTLE_PIN_SDO, ADCS_PIN_DIRECTION_OUT, ADCS_PIN_VALUE_LOW);
+            //adcs_set_pin_config(ADCS_SHUTTLE_PIN_SDO, ADCS_PIN_DIRECTION_OUT, ADCS_PIN_VALUE_LOW);
 
             result = adcs_config_i2c_bus(ADCS_I2C_BUS_0, ADCS_I2C_STANDARD_MODE);
-
+            printf("common.c: bmi2_interface_init: adcs_config_i2c_bus result: %d \n", result);
             bus_inst = ADCS_I2C_BUS_0;
         }
         /* Bus configuration : SPI */
